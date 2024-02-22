@@ -13,13 +13,13 @@ body{
     background-color: black;
 }
 .card{
-    width: 90%;
+    width: 90vw;
     max-width: 450px;
     background: linear-gradient(135deg, #00feba, #5b548a);
     color: #fff;
-    margin: 100px auto 0;   /*100% top 0 from bottom and auto left right  */
+    margin: 100px auto 0;   /*100px top 0 from bottom and auto left right  */
     border-radius: 20px;
-    padding: 40px 35px;
+    padding: 20px 20px;
     text-align: center;
 }
 .search{
@@ -86,13 +86,16 @@ margin-right: 10px;
 }
 .humidity , .wind{
     font-size: 25px;
-    margin-top: 4px;
+    margin-top: 20px;
 }
 .weather{
     display: none;
 }
 .error{
     display: none;
+}
+#p{
+    margin-top: -20px;
 }
 </style>
 <body>
@@ -113,7 +116,7 @@ margin-right: 10px;
                     <img src="img/humidity-removebg-preview.webp" alt="" style="width: 60px;">
                 <div>
                     <p class="humidity">50%</p>
-                    <p>Humidity</p>
+                    <p id="p">Humidity</p>
                 </div>
             </div>
                 <div class="details">
@@ -121,7 +124,7 @@ margin-right: 10px;
                         <img src="img/wind-removebg-preview.webp" alt="" style="width: 60px;">
                      <div>
                         <p class="wind">15 km/h</p>
-                        <p>wind speed</p>
+                        <p id="p">wind speed</p>
                      </div>
                     </div>
                 </div>
@@ -140,14 +143,13 @@ margin-right: 10px;
     async function checkwheater(city)
     {
         const response = await fetch(apiurl + city + `&appid=${apikey}`);
-        if (response.status == 404){
+        if(response.status == 404){
             document.querySelector(".error").style.display="block";
             document.querySelector(".weather").style.display="none";
         }
         else if (searchbox.value == ""){
             document.querySelector(".weather").style.display="none";
             document.querySelector(".error").style.display="none";
-
         }
         else{
             document.querySelector(".error").style.display="none";
