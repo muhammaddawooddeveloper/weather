@@ -144,9 +144,10 @@ margin-right: 10px;
             document.querySelector(".error").style.display="block";
             document.querySelector(".weather").style.display="none";
         }
-        if (response.status == ''){
-            // document.querySelector(".error").style.display="block";
+        else if (searchbox.value == ""){
             document.querySelector(".weather").style.display="none";
+            document.querySelector(".error").style.display="none";
+
         }
         else{
             document.querySelector(".error").style.display="none";
