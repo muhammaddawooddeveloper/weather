@@ -142,6 +142,15 @@ margin-right: 10px;
     const searchbox = document.querySelector(".search input");
     const searchbtn = document.querySelector(".search button");
     var weather = document.querySelector(".weather-icon");
+    searchbtn.addEventListener('click', function(){
+        checkwheater(searchbox.value);
+        document.querySelector(".weather").style.disply="block";
+        searchbox.value = ''; // Clear the search box after search
+        // searchbox.focus(); // Focus on the search box for the next input
+        // checkwheater(city);
+        // weatherc.disply = inline;
+
+    });
     async function checkwheater(city)
     {
         const response = await fetch(apiurl + city + `&appid=${apikey}`);
@@ -186,14 +195,5 @@ margin-right: 10px;
         document.querySelector(".weather").style.display = "block";
     }
 
-    searchbtn.addEventListener('click', function(){
-        checkwheater(searchbox.value);
-        document.querySelector(".weather").style.disply="block";
-        searchbox.value = ''; // Clear the search box after search
-        // searchbox.focus(); // Focus on the search box for the next input
-        // checkwheater(city);
-        // weatherc.disply = inline;
-
-    });
 </script>
 </html>
